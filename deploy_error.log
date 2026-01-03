@@ -1,0 +1,105 @@
+build	Install, build, and upload your site	﻿2026-01-03T05:08:08.2223083Z ##[group]Run withastro/action@v3
+build	Install, build, and upload your site	2026-01-03T05:08:08.2223449Z with:
+build	Install, build, and upload your site	2026-01-03T05:08:08.2223658Z   path: .
+build	Install, build, and upload your site	2026-01-03T05:08:08.2223869Z   node-version: 20
+build	Install, build, and upload your site	2026-01-03T05:08:08.2224091Z ##[endgroup]
+build	Install, build, and upload your site	2026-01-03T05:08:08.2313673Z ##[group]Run len=`echo $INPUT_PM | wc -c`
+build	Install, build, and upload your site	2026-01-03T05:08:08.2314113Z [36;1mlen=`echo $INPUT_PM | wc -c`[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2314427Z [36;1mif [ $len -gt 1 ]; then[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2314808Z [36;1m  PACKAGE_MANAGER=$(echo "$INPUT_PM" | grep -o '^[^@]*')[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2315267Z [36;1m  VERSION=$(echo "$INPUT_PM" | { grep -o '@.*' || true; } | sed 's/^@//')[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2315667Z [36;1m  # Set default VERSION if not provided[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2316001Z [36;1m  if [ -z "$VERSION" ]; then[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2316275Z [36;1m      VERSION="latest"[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2316526Z [36;1m  fi[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2316800Z [36;1m  echo "PACKAGE_MANAGER=$PACKAGE_MANAGER" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2317224Z [36;1melif [ $(find "." -maxdepth 1 -name "pnpm-lock.yaml") ]; then[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2317659Z [36;1m    echo "PACKAGE_MANAGER=pnpm" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2318015Z [36;1m    echo "LOCKFILE=pnpm-lock.yaml" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2318378Z [36;1melif [ $(find "." -maxdepth 1 -name "yarn.lock") ]; then[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2318746Z [36;1m    echo "PACKAGE_MANAGER=yarn" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2319082Z [36;1m    echo "LOCKFILE=yarn.lock" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2319455Z [36;1melif [ $(find "." -maxdepth 1 -name "package-lock.json") ]; then[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2319823Z [36;1m    VERSION="latest"[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2320118Z [36;1m    echo "PACKAGE_MANAGER=npm" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2320472Z [36;1m    echo "LOCKFILE=package-lock.json" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2321047Z [36;1melif [ $(find "." -maxdepth 1 -name "bun.lock") ]; then[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2321390Z [36;1m    VERSION="latest"[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2321672Z [36;1m    echo "PACKAGE_MANAGER=bun" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2322000Z [36;1m    echo "LOCKFILE=bun.lock" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2322354Z [36;1melif [ $(find "." -maxdepth 1 -name "bun.lockb") ]; then[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2322676Z [36;1m    VERSION="latest"[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2322955Z [36;1m    echo "PACKAGE_MANAGER=bun" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2323279Z [36;1m    echo "LOCKFILE=bun.lockb" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2323560Z [36;1melse[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2323787Z [36;1m    echo "No lockfile found.[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2324202Z [36;1mPlease specify your preferred \"package-manager\" in the action configuration."[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2324624Z [36;1m    exit 1[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2324833Z [36;1mfi[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2325068Z [36;1mecho "VERSION=$VERSION" >> $GITHUB_ENV[0m
+build	Install, build, and upload your site	2026-01-03T05:08:08.2362116Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Install, build, and upload your site	2026-01-03T05:08:08.2362508Z env:
+build	Install, build, and upload your site	2026-01-03T05:08:08.2362732Z   INPUT_PM: 
+build	Install, build, and upload your site	2026-01-03T05:08:08.2362942Z ##[endgroup]
+build	Install, build, and upload your site	2026-01-03T05:08:08.2630641Z ##[group]Run actions/setup-node@v4
+build	Install, build, and upload your site	2026-01-03T05:08:08.2631097Z with:
+build	Install, build, and upload your site	2026-01-03T05:08:08.2631316Z   node-version: 20
+build	Install, build, and upload your site	2026-01-03T05:08:08.2631538Z   cache: npm
+build	Install, build, and upload your site	2026-01-03T05:08:08.2631786Z   cache-dependency-path: ./package-lock.json
+build	Install, build, and upload your site	2026-01-03T05:08:08.2632090Z   always-auth: false
+build	Install, build, and upload your site	2026-01-03T05:08:08.2632327Z   check-latest: false
+build	Install, build, and upload your site	2026-01-03T05:08:08.2632677Z   token: ***
+build	Install, build, and upload your site	2026-01-03T05:08:08.2632908Z env:
+build	Install, build, and upload your site	2026-01-03T05:08:08.2633117Z   PACKAGE_MANAGER: npm
+build	Install, build, and upload your site	2026-01-03T05:08:08.2633361Z   LOCKFILE: package-lock.json
+build	Install, build, and upload your site	2026-01-03T05:08:08.2633618Z   VERSION: latest
+build	Install, build, and upload your site	2026-01-03T05:08:08.2634019Z ##[endgroup]
+build	Install, build, and upload your site	2026-01-03T05:08:08.4386010Z Found in cache @ /opt/hostedtoolcache/node/20.19.6/x64
+build	Install, build, and upload your site	2026-01-03T05:08:08.4392615Z ##[group]Environment details
+build	Install, build, and upload your site	2026-01-03T05:08:08.7909983Z node: v20.19.6
+build	Install, build, and upload your site	2026-01-03T05:08:08.7910491Z npm: 10.8.2
+build	Install, build, and upload your site	2026-01-03T05:08:08.7910819Z yarn: 1.22.22
+build	Install, build, and upload your site	2026-01-03T05:08:08.7912059Z ##[endgroup]
+build	Install, build, and upload your site	2026-01-03T05:08:08.7933854Z [command]/opt/hostedtoolcache/node/20.19.6/x64/bin/npm config get cache
+build	Install, build, and upload your site	2026-01-03T05:08:08.9120411Z /home/runner/.npm
+build	Install, build, and upload your site	2026-01-03T05:08:09.0501989Z npm cache is not found
+build	Install, build, and upload your site	2026-01-03T05:08:09.0627841Z ##[group]Run $PACKAGE_MANAGER install
+build	Install, build, and upload your site	2026-01-03T05:08:09.0628199Z [36;1m$PACKAGE_MANAGER install[0m
+build	Install, build, and upload your site	2026-01-03T05:08:09.0671803Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Install, build, and upload your site	2026-01-03T05:08:09.0672140Z env:
+build	Install, build, and upload your site	2026-01-03T05:08:09.0672322Z   PACKAGE_MANAGER: npm
+build	Install, build, and upload your site	2026-01-03T05:08:09.0672543Z   LOCKFILE: package-lock.json
+build	Install, build, and upload your site	2026-01-03T05:08:09.0672773Z   VERSION: latest
+build	Install, build, and upload your site	2026-01-03T05:08:09.0672949Z ##[endgroup]
+build	Install, build, and upload your site	2026-01-03T05:08:15.1535116Z 
+build	Install, build, and upload your site	2026-01-03T05:08:15.1542727Z added 381 packages, and audited 382 packages in 6s
+build	Install, build, and upload your site	2026-01-03T05:08:15.1543081Z 
+build	Install, build, and upload your site	2026-01-03T05:08:15.1543315Z 208 packages are looking for funding
+build	Install, build, and upload your site	2026-01-03T05:08:15.1543637Z   run `npm fund` for details
+build	Install, build, and upload your site	2026-01-03T05:08:15.1548811Z 
+build	Install, build, and upload your site	2026-01-03T05:08:15.1549078Z found 0 vulnerabilities
+build	Install, build, and upload your site	2026-01-03T05:08:15.1787030Z ##[group]Run $PACKAGE_MANAGER run build
+build	Install, build, and upload your site	2026-01-03T05:08:15.1787365Z [36;1m$PACKAGE_MANAGER run build[0m
+build	Install, build, and upload your site	2026-01-03T05:08:15.1823681Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Install, build, and upload your site	2026-01-03T05:08:15.1824004Z env:
+build	Install, build, and upload your site	2026-01-03T05:08:15.1824183Z   PACKAGE_MANAGER: npm
+build	Install, build, and upload your site	2026-01-03T05:08:15.1824392Z   LOCKFILE: package-lock.json
+build	Install, build, and upload your site	2026-01-03T05:08:15.1824615Z   VERSION: latest
+build	Install, build, and upload your site	2026-01-03T05:08:15.1824824Z ##[endgroup]
+build	Install, build, and upload your site	2026-01-03T05:08:15.2929584Z 
+build	Install, build, and upload your site	2026-01-03T05:08:15.2930290Z > site-tida-importer@0.0.1 build
+build	Install, build, and upload your site	2026-01-03T05:08:15.2930695Z > astro build
+build	Install, build, and upload your site	2026-01-03T05:08:15.2931051Z 
+build	Install, build, and upload your site	2026-01-03T05:08:16.8330698Z [31m[1m05:08:16[22m [ERROR] [@astrojs/starlight][39m An unhandled error occurred while running the [1m"astro:config:setup"[22m hook
+build	Install, build, and upload your site	2026-01-03T05:08:17.2378617Z [31m[AstroUserError][39m Invalid config passed to starlight integration
+build	Install, build, and upload your site	2026-01-03T05:08:17.2379455Z   [1mHint:[22m
+build	Install, build, and upload your site	2026-01-03T05:08:17.2380812Z [33m    Could not determine the default locale. Please make sure `defaultLocale` in your Starlight config is one of "root", "ja", "zh-tw"[39m
+build	Install, build, and upload your site	2026-01-03T05:08:17.2382218Z   [1mLocation:[22m
+build	Install, build, and upload your site	2026-01-03T05:08:17.2383436Z     [4m/home/runner/work/site-tida-importer-2026/site-tida-importer-2026/node_modules/@astrojs/starlight/utils/error-map.ts:14:11[24m
+build	Install, build, and upload your site	2026-01-03T05:08:17.2384504Z   [1mStack trace:[22m
+build	Install, build, and upload your site	2026-01-03T05:08:17.2385987Z [2m    at processParsedData (/home/runner/work/site-tida-importer-2026/site-tida-importer-2026/node_modules/@astrojs/starlight/utils/error-map.ts:14:11)
+build	Install, build, and upload your site	2026-01-03T05:08:17.2387213Z     at runPlugins (/home/runner/work/site-tida-importer-2026/site-tida-importer-2026/node_modules/@astrojs/starlight/utils/plugins.ts:16:74)
+build	Install, build, and upload your site	2026-01-03T05:08:17.2388343Z     at hookFn (file:///home/runner/work/site-tida-importer-2026/site-tida-importer-2026/node_modules/astro/dist/integrations/hooks.js:54:21)
+build	Install, build, and upload your site	2026-01-03T05:08:17.2389351Z     at runHookInternal (file:///home/runner/work/site-tida-importer-2026/site-tida-importer-2026/node_modules/astro/dist/integrations/hooks.js:51:11)
+build	Install, build, and upload your site	2026-01-03T05:08:17.2390552Z     at async AstroBuilder.setup (file:///home/runner/work/site-tida-importer-2026/site-tida-importer-2026/node_modules/astro/dist/core/build/index.js:71:21)[22m
+build	Install, build, and upload your site	2026-01-03T05:08:17.2606931Z ##[error]Process completed with exit code 1.

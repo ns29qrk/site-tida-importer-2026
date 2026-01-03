@@ -43,5 +43,5 @@ export default defineConfig({
 			],
 		}),
 	],
-	base: '/site-tida-importer-2026',
+	site: 'https://ns.29q.ryukyu',
 });
