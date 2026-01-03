@@ -64,7 +64,7 @@ Movable Type 形式で出力されるので WordPress では、公式の [Movabl
 
 ### エクスポートファイルの取得方法
 1. 「管理画面」の「サイドバー」にある、「ブログの設定」の「書き出し」を選択してください.  
-![てぃーだブログ|書き出しメニュー](/images/common/note-2025122901.webp)
+![てぃーだブログ|書き出しメニュー](/tida-importer-2026/images/common/note-2025122901.webp)
 
 2. 書き出しの設定
     - 文字コード: UTF-8 を選んでください
@@ -72,19 +72,19 @@ Movable Type 形式で出力されるので WordPress では、公式の [Movabl
     - 対象カテゴリ: すべてを選択
     - 設定が終わったら、「書き出し開始」をクリックしてください
     
-    ![てぃーだブログ|書き出し項目](/images/common/note-2025122902.webp)
+    ![てぃーだブログ|書き出し項目](/tida-importer-2026/images/common/note-2025122902.webp)
 
 3. 保存先を選択して、「保存」をクリックしてください.  
-![てぃーだブログ|書き出し保存先](/images/common/note-2025122903.webp)
+![てぃーだブログ|書き出し保存先](/tida-importer-2026/images/common/note-2025122903.webp)
 
 ### サイドバーにカテゴリを表示
 
 カテゴリの階層構造を取得するために、サイドバーのカテゴリープラグインを表示するように設定してください
 1. 「管理画面」の「サイドバー」にある、「ブログの設定」の「サイドバー」を選択してください.  
-![てぃーだブログ|カテゴリメニュー](/images/common/note-2025122904.webp)
+![てぃーだブログ|カテゴリメニュー](/tida-importer-2026/images/common/note-2025122904.webp)
 
 2. カテゴリープラグインを表示するように設定してください.  
-![てぃーだブログ|書き出しメニュー](/images/common/note-2025122905.webp)   
+![てぃーだブログ|書き出しメニュー](/tida-importer-2026/images/common/note-2025122905.webp)   
 より詳しい説明は[公式](https://faq.ti-da.net/e408411.html)を参照してください
 
 ---
@@ -101,38 +101,38 @@ Movable Type 形式で出力されるので WordPress では、公式の [Movabl
 ## TIDA Importer 2026の使用方法
 
 1. サイドバーから 'TI-DA Importer' を選択
-![管理画面メニュー](/images/common/note-2025122911.webp)
+![管理画面メニュー](/tida-importer-2026/images/common/note-2025122911.webp)
 
 2. アーカイブのアップロード
     *   ①で、てぃーだブログからエクスポートしたファイルを選択してください
     *   ②に、てぃーだブログで使っていたURLを入力してください。入力しなくてもインポートは出来ますが、入力した場合はリダイレクトやカテゴリの親子関係、画像の取得が可能となります
     *   設定が終わったら③の「アップロードして解析」ボタンをクリックしてください
-![アップロード画面](/images/common/note-2025122912.webp)
+![アップロード画面](/tida-importer-2026/images/common/note-2025122912.webp)
 
 3. アップロードしたファイルの解析が行われます.  
     解析が終わったら 'インポート実行' ボタンをクリック
-![解析画面](/images/common/note-2025122913.webp)
+![解析画面](/tida-importer-2026/images/common/note-2025122913.webp)
 
 4. インポート中です。データ取得に時間がかかる場合があります（タブを閉じないでください）
-![インポート中](/images/common/note-2025122915.webp)
+![インポート中](/tida-importer-2026/images/common/note-2025122915.webp)
 
 5. インポート完了です.   
     'カテゴリーの再構築' ボタンを押すとカテゴリーの親子関係の調整ができます.    
     (ブログURLを指定していない場合はここで終了です)
-![インポート完了](/images/common/note-2025122916.webp)
+![インポート完了](/tida-importer-2026/images/common/note-2025122916.webp)
 
 6. カテゴリー再構築画面
-![カテゴリ再構築](/images/common/note-2025122917.webp)
+![カテゴリ再構築](/tida-importer-2026/images/common/note-2025122917.webp)
   *   '>' をクリックすると子カテゴリーになります
-    ![子カテゴリ化](/images/common/note-2025122919.webp)
+    ![子カテゴリ化](/tida-importer-2026/images/common/note-2025122919.webp)
   *   '<' をクリックすると親カテゴリーになります
-    ![親カテゴリ化](/images/common/note-2025122920.webp)
+    ![親カテゴリ化](/tida-importer-2026/images/common/note-2025122920.webp)
   *   ドラッグでカテゴリーの位置を変更できます
-    ![ドラッグ移動](/images/common/note-2025122921.webp)
+    ![ドラッグ移動](/tida-importer-2026/images/common/note-2025122921.webp)
   *   'カテゴリを更新/作成' ボタンをクリックすると適用されます
 
 7. カテゴリの再構築が完了すればインポート終了です。
-  ![完了画面](/images/common/note-2025122922.webp)
+  ![完了画面](/tida-importer-2026/images/common/note-2025122922.webp)
 
 ---
 
