@@ -14,7 +14,7 @@ export default defineConfig({
 					href: 'https://github.com/ns29qrk/angra-tida-importer-2026',
 				},
 			],
-			defaultLocale: 'en',
+			defaultLocale: 'root',
 			locales: {
 				root: {
 					label: 'English',
